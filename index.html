@@ -366,6 +366,15 @@ message += `<hr>
   document.getElementById("orderDetails").innerHTML = message;
   document.getElementById("finalMessage").style.display = "flex";
 }
+function copyOrderDetails() {
+  const details = document.getElementById("orderDetails").innerText;
+  navigator.clipboard.writeText(details).then(() => {
+    alert("✅ تم نسخ تفاصيل طلبك بنجاح!");
+  }).catch(err => {
+    alert("❌ حدث خطأ أثناء النسخ");
+    console.error(err);
+  });
+}
 
 </script>
 <div id="popup" class="popup">
@@ -388,7 +397,7 @@ message += `<hr>
     <div style="margin-top:10px;">
       <label><input type="checkbox" id="payDollar" onchange="updateTotal()">الدفع بالدولار</label>
     </div>
-
+    <button class="btn" onclick="copyOrderDetails()">نسخ تفاصيل الطلب</button>
     <button class="btn" onclick="confirmOrder()" style="margin-top: 15px;">إتمام الطلب</button>
     <button class="close-popup" onclick="closePopup()">إغلاق</button>
   </div>
@@ -406,4 +415,5 @@ message += `<hr>
 
 </body>
 </html>
+
 
