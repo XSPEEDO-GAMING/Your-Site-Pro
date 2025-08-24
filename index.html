@@ -399,7 +399,6 @@ function copyOrderDetails() {
     <div style="margin-top:10px;">
       <label><input type="checkbox" id="payDollar" onchange="updateTotal()">الدفع بالدولار</label>
     </div>
-    <button class="btn" onclick="copyOrderDetails()">نسخ تفاصيل الطلب</button>
     <button class="btn" onclick="confirmOrder()" style="margin-top: 15px;">إتمام الطلب</button>
     <button class="close-popup" onclick="closePopup()">إغلاق</button>
   </div>
@@ -410,6 +409,7 @@ function copyOrderDetails() {
     <h3>💡 تفاصيل طلبك</h3>
 
     <div id="orderDetails"></div>
+    <button class="btn" onclick="copyOrderDetails()">نسخ تفاصيل الطلب</button>
     <button class="callme" onclick="window.open('https://m.me/xspeedo.gaming.2025', '_blank')">تواصل معانا لتأكيد الطلب 📱</button>
     <button class="close-popup" onclick="document.getElementById('finalMessage').style.display='none'">إغلاق</button>
   </div>
@@ -417,6 +417,7 @@ function copyOrderDetails() {
 
 </body>
 </html>
+
 
 
 
