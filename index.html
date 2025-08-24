@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>موقعك برو - Your Site Pro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #f5f5f5;
+    }
+
+    header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #ffc107;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .container {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffc107;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #ffc107;
+      color: #000;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      margin: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e0a800;
+    }
+
+    .plans {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .plan-card {
+      background-color: #1e1e1e;
+      padding: 25px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .plan-card h3 {
+      color: #ffc107;
+      margin-bottom: 10px;
+    }
+
+    .plan-card p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .plan-card .price {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00ff88;
+    }
+
+    .plan-card.highlighted {
+      border: 2px solid #ffc107;
+    }
+
+    footer {
+      background-color: #1c1c1c;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+      border-top: 1px solid #333;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .btn {
+        width: 80%;
+        font-size: 1rem;
+      }
+    }
+      .popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .popup-content {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 450px;
+    width: 90%;
+    color: #fff;
+    text-align: center;
+    border: 2px solid #ffc107;
+  }
+
+  .popup-content select, .popup-content button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 90%;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+  }
+
+  .close-popup {
+    background: #ff4444;
+    color: white;
+    margin-top: 20px;
+  }
+
+  .info {
+    margin-top: 15px;
+    color: #00ff88;
+  }
+  .callme {
+    background: #00bcd4;
+    color: white;
+    margin-top: 20px;
+    width: 100%;
+  }
+  </style>
+
+
+</head>
+<body>
+
+  <header>
+    <h1>موقعك برو</h1>
+    <p>Your Site Pro - الأفضل لإنشاء موقعك الإلكتروني بكل احتراف</p>
+  </header>
+
+  <div class="container">
+    <h2>🚀 خدماتنا</h2>
+    <p>نحن نقدم تصميم مواقع إلكترونية احترافية، متجاوبة، سريعة، ومناسبة لكل أنواع المشاريع</p>
+
+    <button class="btn" onclick="showPlans()">عرض الباقات</button>
+    <br>
+    <a href="https://m.me/xspeedo.gaming.2025" target="_blank">
+    <button class="btn">💬 راسلنا على ماسنجر</button>
+    </a>
+
+  </div>
+<!-- واجهة الاشتراك -->
+  <div id="plansSection" class="plans">
+    <div style="width: 100%; display: flex; justify-content: center;">
+  <div class="plan-card" style="background-color: #3a1e1e; border: 2px solid #ff4444; text-align: center; max-width: 500px;">
+    <h3 style="color: #ff4444;">⚠️ تنبيه هام</h3>
+    <p style="color: #f9dada;">
+      إذا لم يتم دفع الرسوم عند نهاية الشهر<br>
+      سيتم إيقاف الموقع مؤقتًا حتى يتم السداد<br><br>
+      <strong style="color: #ffc107">( هذا التحذير مخصص للمستخدمين بنظام الإيجار الشهري )</strong>
+    </p>
+  </div>
+</div>
+    <div class="plan-card">
+      <h3>باقة شهريه البداية</h3>
+      <p>موقع صفحة واحدة</p>
+      <p>توافق مع جميع الأجهزة</p>
+      <p>نموذج تواصل واتساب</p>
+      <p class="price">600 جنيه (إيجار شهري)</p>
+      <p style="color:#ffc107;font-weight:bold;">الشراء الكامل: 2800 جنيه</p>
+      <button class="btn" onclick="openHostingOptions(600)">اطلب الآن</button>
+    </div>
+    <div class="plan-card">
+      <h3>باقة شهريه احترافية</h3>
+      <p>موقع 4 صفحات</p>
+      <p>تصميم مخصص واحترافي</p>
+      <p>نطاق فرعي مجاني</p>
+      <p>نموذج تواصل متكامل</p>
+      <p class="price">900 جنيه (إيجار شهري)</p>
+      <button class="btn" onclick="openHostingOptions(900)">اطلب الآن</button>
+    </div>
+    <div class="plan-card">
+      <h3>باقة متجر إلكتروني شهرياً</h3>
+  <p>موقع متجر منتجات بسيط</p>
+  <p>دفع واتساب / فودافون كاش</p>
+  <p>لوحة تحكم للمنتجات</p>
+  <p>دعم فني 15 يوم</p>
+      <p class="price">1200 جنيه (إيجار شهري)</p>
+      <button class="btn" onclick="openHostingOptions(1200)">اطلب الآن</button>
+    </div>
+    <div class="plan-card">
+      <h3>باقة الشركات شهرياً</h3>
+  <p>موقع متعدد الصفحات</p>
+  <p>لوحة تحكم لإدارة المحتوى</p>
+  <p>نطاق مميز + شهادة SSL</p>
+  <p>ربط بالبريد الإلكتروني المهني</p>
+  <p>دعم فني مستمر لمدة 3 شهور</p>
+      <p class="price">1700 جنيه (إيجار شهري)</p>
+      <button class="btn" onclick="openHostingOptions(1700)">اطلب الآن</button>
+    </div>
+    <div class="plan-card">
+      <h3>باقة المتجر الإلكتروني شهرياً</h3>
+  <p>موقع تجارة إلكترونية متكامل</p>
+  <p>إدارة منتجات + مدفوعات</p>
+  <p>تتبع الطلبات والشحن</p>
+  <p>ربط فوري بوسائل الدفع</p>
+  <p>تصميم احترافي وتجربة مستخدم حديثة</p>
+      <p class="price">2700 جنيه (إيجار شهري)</p>
+      <button class="btn" onclick="openHostingOptions(2700)">اطلب الآن</button>
+    </div>
+  </div>
+
+  <footer>
+    جميع الحقوق محفوظة © موقعك برو 2025
+  </footer>
+
+<script>
+
+let selectedPackage = 0;
+const dollarRate = 48.30;
+
+function showPlans() {
+  const section = document.getElementById("plansSection");
+  if (section.style.display === "none" || section.style.display === "") {
+    section.style.display = "flex";
+  } else {
+    section.style.display = "none";
+  }
+}
+
+function openHostingOptions(packagePrice) {
+  selectedPackage = packagePrice;
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("totalPrice").innerText = "";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("hostingInfo").innerText = '';
+}
+
+const hostingPlans = {
+  github: [
+    { name: "مجانية - GitHub Basic", price: 0, priceDollar: 0 },
+    { name: "GitHub Pro", price: 100, priceDollar: 3 },
+  ],
+  hostinger: [
+    { name: "Hostinger Starter", price: 150, priceDollar: 5 },
+    { name: "Hostinger Pro", price: 300, priceDollar: 10 },
+  ],
+  free: [
+    { name: "باقة مجانية - InfinityFree", price: 0, priceDollar: 0 },
+    { name: "InfinityFree Premium", price: 120, priceDollar: 4 },
+  ]
+};
+
+function showHostingPlans() {
+  const select = document.getElementById("hostingSelect").value;
+  const planSelect = document.getElementById("planSelect");
+  const plansContainer = document.getElementById("plansContainer");
+  planSelect.innerHTML = "";
+
+  if (!select) {
+    plansContainer.style.display = "none";
+    return;
+  }
+
+  hostingPlans[select].forEach(plan => {
+    const option = document.createElement("option");
+    option.text = `${plan.name} (${plan.price} جنيه / ${plan.priceDollar}$)`;
+    option.value = plan.price;
+    option.setAttribute('data-dollar', plan.priceDollar);
+    planSelect.appendChild(option);
+  });
+
+  plansContainer.style.display = "block";
+  updateTotal();
+}
+
+function updateTotal() {
+  const planPrice = parseInt(document.getElementById("planSelect").value || "0");
+  const total = selectedPackage + planPrice;
+  const payDollar = document.getElementById("payDollar")?.checked || false;
+
+  if (payDollar) {
+    const totalDollar = (total / dollarRate);
+    document.getElementById("totalPrice").innerText =
+      `✅ المبلغ الإجمالي: ${totalDollar.toFixed(2)} دولار (إيجار شهري)`;
+  } else {
+    document.getElementById("totalPrice").innerText =
+      `✅ المبلغ الإجمالي: ${total} جنيه (إيجار شهري)`;
+  }
+}
+
+function confirmOrder() {
+  const planSelect = document.getElementById("planSelect");
+  const planPrice = parseInt(planSelect.value || "0");
+  const payDollar = document.getElementById("payDollar")?.checked || false;
+
+  const total = selectedPackage + planPrice;
+  const totalDollar = (total / dollarRate);
+
+  let message = `✅ <strong>الخطة المختارة:</strong> ${selectedPackage} + استضافة ${planPrice}<br><br>`;
+
+if (payDollar) {
+  const buyoutDollar = totalDollar * 7;
+  message += `💰 المبلغ الإجمالي: ${totalDollar.toFixed(2)} دولار (إيجار شهري)<br>`;
+  message += `🛒 سعر الشراء الكامل: ${buyoutDollar.toFixed(2)} دولار (مرة واحدة فقط)<br><br>`;
+} else {
+  const buyoutEgp = total * 7;
+  message += `💰 المبلغ الإجمالي: ${total} جنيه (إيجار شهري)<br>`;
+  message += `🛒 سعر الشراء الكامل: ${buyoutEgp} جنيه (مرة واحدة فقط)<br><br>`;
+}
+
+message += `<hr>
+<strong>ملاحظات هامة:</strong><br>
+- السعر الشهري هو للإيجار فقط، ويشمل الدعم الفني والتحديثات.<br>
+- عند <span style="color:#ffc107;">الشراء الكامل</span> يتم التخلي عن إدارة الموقع نهائيًا، 
+ويتم تسليمك جميع الملفات بصيغة <strong>.zip</strong> لتصبح تحت إدارتك الكاملة.<br>
+- بعد الشراء الكامل، لن يكون الموقع تحت إدارتنا أو مسؤوليتنا.<br>
+- يمكنك رفع الموقع على أي استضافة من اختيارك بعد استلام الملفات.<br>
+`;
+
+
+
+  document.getElementById("orderDetails").innerHTML = message;
+  document.getElementById("finalMessage").style.display = "flex";
+}
+
+</script>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h3>اختر نوع الاستضافة</h3>
+    <select id="hostingSelect" onchange="showHostingPlans()" required>
+      <option value="" selected>-- اختر الاستضافة --</option>
+      <option value="github">GitHub Pages</option>
+      <option value="hostinger">Hostinger</option>
+      <option value="free">InfinityFree</option>
+    </select>
+
+    <div id="plansContainer" style="margin-top: 15px; display: none;">
+      <h4>اختر خطة الاستضافة</h4>
+      <select id="planSelect" onchange="updateTotal()"></select>
+    </div>
+
+    <div id="totalPrice" style="margin-top: 15px; font-weight: bold;"></div>
+
+    <div style="margin-top:10px;">
+      <label><input type="checkbox" id="payDollar" onchange="updateTotal()">الدفع بالدولار</label>
+    </div>
+
+    <button class="btn" onclick="confirmOrder()" style="margin-top: 15px;">إتمام الطلب</button>
+    <button class="close-popup" onclick="closePopup()">إغلاق</button>
+  </div>
+</div>
+
+<div id="finalMessage" class="popup" style="display: none;">
+  <div class="popup-content">
+    <h3>💡 تفاصيل طلبك</h3>
+
+    <div id="orderDetails"></div>
+    <button class="callme" onclick="window.open('https://m.me/xspeedo.gaming.2025', '_blank')">تواصل معانا لتأكيد الطلب 📱</button>
+    <button class="close-popup" onclick="document.getElementById('finalMessage').style.display='none'">إغلاق</button>
+  </div>
+</div>
+
+</body>
+</html>
