@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xspeedo-gaming.github.io/Your-Site-Pro/sitemap.xml
