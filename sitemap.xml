@@ -9,15 +9,15 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- صفحة الباقات -->
+  <!-- ملف index.html -->
   <url>
-    <loc>hhttps://xspeedo-gaming.github.io/Your-Site-Pro/index.html</loc>
+    <loc>https://xspeedo-gaming.github.io/Your-Site-Pro/index.html</loc>
     <lastmod>2025-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- صفحة الصور -->
+  <!-- ملف Photo.html -->
   <url>
     <loc>https://xspeedo-gaming.github.io/Your-Site-Pro/Photo.html</loc>
     <lastmod>2025-09-06</lastmod>
@@ -26,3 +26,4 @@
   </url>
 
 </urlset>
+
