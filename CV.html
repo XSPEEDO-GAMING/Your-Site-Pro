@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="Mohamed.png" type="image/x-icon">
+<link rel="shortcut icon" href="img/Mohamed.png" type="image/x-icon">
 <title>السيرة الذاتية | CV</title>
 <style>
   body { font-family: "Tahoma", sans-serif; direction: rtl; margin: 40px; background: #f9f9f9; }
@@ -61,6 +61,25 @@
       z-index: -1;
       background: black;
     }
+.abtn-cv {
+  display: inline-block;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.abtn-cv:hover{
+  color: gold;
+  text-decoration: none;
+}
+.abtn-cv:active{
+  color: red;
+  text-decoration: none;
+}
+  
 </style>
 </head>
 <body>
@@ -84,7 +103,7 @@
 	</div>
   <div class="cv-container">
     <div class="header">
-      <img src="Mohamed.png" alt="صورتك">
+      <img src="img/Mohamed.png" alt="صورتك"  onclick="Download()">
       <h1>
         الاسم الكامل :-
         <p id="name">Mohamed Hany</p>
@@ -92,6 +111,8 @@
       <h2>
        المسمى الوظيف :-
         <p id="name-work"> Your Site Pro | موقعك برو </p>
+        <br>
+        <a href="img/CV.png" download="img/CV.png" class="abtn-cv">Download My Cv.png</a>
       </h2>
     </div>
 
@@ -124,7 +145,7 @@
         <li class="li-a-code">شهادة برمجة من
           <a href="https://www.code.org/" target="_blank" rel="noopener noreferrer" class="abtn">Code.org</a>
         </li>
-        <img src="code.png" alt="code.png" class="img-code" onclick="window.open('https://www.code.org/', '_blank');">
+        <img src="img/code.png" alt="code.png" class="img-code" onclick="window.open('https://www.code.org/', '_blank');">
       </ul>
     </div>
   </div>
@@ -171,7 +192,10 @@
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
     });
-
+    // تحميل الملف
+    function Download() {
+      
+    }
   </script>
 </body>
 </html>
