@@ -53,9 +53,35 @@
     border-radius: 10px;
     font-size: 25px;
   }
+      canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: black;
+    }
 </style>
 </head>
 <body>
+    <canvas id="matrix"></canvas>
+  	<!-- زر QR أعلى يمين الصفحة -->
+	<button onclick="openQRModal()" style="position:fixed;top:18px;right:24px;z-index:1001;background:#a3e635;color:#1e293b;border:none;padding:10px 18px;border-radius:50px;font-size:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,0.12);cursor:pointer;transition:background 0.2s;">My QR Code</button>
+	<!-- نافذة QR المنبثقة -->
+	<div id="qrModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,41,59,0.85);z-index:2000;align-items:center;justify-content:center;">
+		<div style="background:#1e293b;color:#1e293b;padding:32px 24px;border-radius:18px;max-width:340px;width:90%;box-shadow:0 4px 24px rgba(0,0,0,0.2);position:relative;text-align:center;">
+			<span style="position:absolute;top:12px;left:16px;cursor:pointer;font-size:1.5rem;color:#3a7d3b;" onclick="closeQRModal()">&times;</span>
+			<h3 style="margin-bottom:18px;color:#3a7d3b;">رمز QR الخاص بنا</h3>
+			<a href="" target="_blank">
+			<img src="img/qr1.png" alt="QR Code 1" style="width:200px;height:200px;margin-bottom:18px;border-radius:16px;border:3px solid #a3e635;cursor:pointer;" title="اذهب إلى فيسبوك">
+			<a href="img/qr1.png" download="qr1.png" style="display:inline-block;background:#1e293b;color:#fff;padding:10px ">Download Qr Code For Facebook</a>
+			<br>
+			<a href="" target="_blank">
+			<img src="img/qr2.png" alt="QR Code 2" style="width:180px;height:180px;margin-bottom:12px;border-radius:16px;border:3px solid #3a7d3b;cursor:pointer;" title="اذهب إلى تيليجرام">
+			<a href="img/qr2.png" download="qr2.png" style="display:inline-block;background:#1e293b;color:#fff;padding:10px ">Download Qr Code For Telegram</a>
+			<div style="margin-top:10px;font-size:0.95rem;color:#3a7d3b;">امسح أي رمز من الأتي أو اضغط عليه للذهاب مباشرة</div>
+		</div>
+	</div>
   <div class="cv-container">
     <div class="header">
       <img src="Mohamed.png" alt="صورتك">
@@ -102,5 +128,50 @@
       </ul>
     </div>
   </div>
+  <script>
+    // نافذة QR
+		function openQRModal() {
+			document.getElementById('qrModal').style.display = 'flex';
+		}
+		function closeQRModal() {
+			document.getElementById('qrModal').style.display = 'none';
+		}
+    // تأثير الماتريكس
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789-_=+>.</'\|!@#$%^&*(){}[]:;<>?,".split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }).fill(1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0f0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(draw, 33);
+
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+
+  </script>
 </body>
 </html>
