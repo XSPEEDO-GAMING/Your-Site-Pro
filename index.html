@@ -1,452 +1,500 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>تصميم مواقع احترافية في مصر | موقعك برو</title>
-  <meta name="description" content="خدمات تصميم مواقع احترافية بامكانيه للتأجير او الشراء الكامل باسعار ايجار تبدأ ب 400 ج م شهرياً او الشراء الكامل للموقع واخذ  ملف الموقع .zip">
-    <!-- كلمات مفتاحية (مش أساسية زي زمان بس ممكن تساعد) -->
-  <meta name="keywords" content="تصميم مواقع, برمجة مواقع, تصميم مواقع مصر, web design egypt, موقعك برو, تصميم متجر الكتروني">
-  <meta name="author" content="موقعك برو">
-
-  <!-- Open Graph للفيسبوك -->
-  <meta property="og:title" content="تصميم مواقع احترافية في مصر | موقعك برو">
-  <meta property="og:description" content="خدمات تصميم مواقع إلكترونية احترافية بأسعار تبدأ من 400 جنيه فقط. دعم فني، باقات مرنة، وتسليم كامل ملفات الموقع بصيغة ZIP.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/">
-  <meta property="og:image" content="https://yourdomain.com/logo1.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="تصميم مواقع احترافية في مصر | موقعك برو">
-  <meta name="twitter:description" content="باقات تبدأ من 400 جنيه فقط، مع دعم فني وتسليم كامل ملفات الموقع بصيغة ZIP.">
-  <meta name="twitter:image" content="https://yourdomain.com/logo1.png">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #f5f5f5;
-    }
-
-    header {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #ffc107;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-top: 10px;
-    }
-
-    .container {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #ffc107;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      background-color: #ffc107;
-      color: #000;
-      padding: 12px 28px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      margin: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration:none;
-    }
-
-    .btn:hover {
-      background-color: #e0a800;
-    }
-
-    .plans {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 40px;
-    }
-
-    .plan-card {
-      background-color: #1e1e1e;
-      padding: 25px;
-      border-radius: 10px;
-      width: 280px;
-      box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
-      transition: transform 0.3s;
-    }
-
-    .plan-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .plan-card h3 {
-      color: #ffc107;
-      margin-bottom: 10px;
-    }
-
-    .plan-card p {
-      margin: 5px 0;
-      font-size: 0.95rem;
-      color: #ddd;
-    }
-
-    .plan-card .price {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #00ff88;
-    }
-
-    .plan-card.highlighted {
-      border: 2px solid #ffc107;
-    }
-
-    footer {
-      background-color: #1c1c1c;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #999;
-      border-top: 1px solid #333;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-
-      .btn {
-        width: 80%;
-        font-size: 1rem;
-        text-decoration:none;
-      }
-    }
-      .popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-
-  .popup-content {
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 450px;
-    width: 90%;
-    color: #fff;
-    text-align: center;
-    border: 2px solid #ffc107;
-  }
-
-  .popup-content select, .popup-content button {
-    margin-top: 15px;
-    padding: 10px;
-    width: 90%;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-  }
-
-  .close-popup {
-    background: #ff4444;
-    color: white;
-    margin-top: 20px;
-  }
-
-  .info {
-    margin-top: 15px;
-    color: #00ff88;
-  }
-  .callme {
-    background: #00bcd4;
-    color: white;
-    margin-top: 20px;
-    width: 100%;
-  }
-  </style>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+    <title>موقعك الإحترافي | Your Site Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap');
+        
+        .arabic { font-family: 'Cairo', sans-serif; }
+        .english { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        };
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .lang-switch {
+            transition: all 0.3s ease;
+        }
+        .lang-switch:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .lang-switch:active{
+            transform: scale(0.95);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50" id="body">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-indigo-600" id="logo">موقعك الإحترافي</h1>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="#home" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" id="nav-home">الرئيسية</a>
+                        <a href="#services" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" id="nav-services">الخدمات</a>
+                        <a href="#about" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" id="nav-about">من نحن</a>
+                        <a href="#contact" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" id="nav-contact">اتصل بنا</a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleLanguage()" class="lang-switch bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium hover:bg-indigo-200" id="lang-btn">
+                        English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <header>
-    <h1>موقعك برو</h1>
-    <p>Your Site Pro - الأفضل لإنشاء موقعك الإلكتروني بكل احتراف</p>
-  </header>
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-5xl font-bold mb-6" id="hero-title">نبني مواقع احترافية تميز علامتك التجارية</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto" id="hero-subtitle">
+                    نحن فريق من المطورين والمصممين المحترفين نساعدك في إنشاء موقع إلكتروني متميز يعكس هويتك ويحقق أهدافك التجارية
+                </p>
+                <div class="space-x-4 space-x-reverse">
+                    <button onclick="scrollToSection('contact')" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" id="cta-primary">
+                        ابدأ مشروعك الآن
+                    </button>
+                    <button onclick="scrollToSection('services')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors" id="cta-secondary">
+                        تعرف على خدماتنا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="container">
-    <h2>🚀 خدماتنا</h2>
-    <p>نحن نقدم تصميم مواقع إلكترونية احترافية، متجاوبة، سريعة، ومناسبة لكل أنواع المشاريع</p>
-    <br>
-    <div style="margin-top:30px;">
-    <a href="CV.html" target="_blank" class="btn">
-      CV الخاص بي
-    </a>
-  </div>
-    <br>
-      <!-- زر مشاهدة المزيد -->
-  <div style="margin-top:30px;">
-    <a href="we-working.html" target="_blank" class="btn">
-      👀 شاهد أعمالنا
-    </a>
-  </div>
-    <br>
-    <button class="btn" onclick="showPlans()">عرض الباقات</button>
-    <br>
-    <a href="https://m.me/61579864318086" target="_blank">
-    <button class="btn">زور صفحتنا 👌</button>
-    </a>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4" id="services-title">خدماتنا المتميزة</h3>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" id="services-subtitle">
+                    نقدم حلول شاملة لتطوير المواقع الإلكترونية بأحدث التقنيات والمعايير العالمية
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service1-title">تصميم مواقع احترافية</h4>
+                    <p class="text-gray-600" id="service1-desc">تصاميم عصرية وجذابة تتناسب مع هوية علامتك التجارية وتوفر تجربة مستخدم مميزة</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service2-title">تطبيقات الهاتف</h4>
+                    <p class="text-gray-600" id="service2-desc">تطوير تطبيقات احترافية للأيفون والأندرويد بأحدث التقنيات وأفضل الممارسات</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">💻</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service3-title">برامج الكمبيوتر</h4>
+                    <p class="text-gray-600" id="service3-desc">تطوير برامج سطح المكتب لأنظمة ويندوز وماك ولينكس حسب احتياجاتك</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service4-title">تصميم البوتات</h4>
+                    <p class="text-gray-600" id="service4-desc">بوتات ذكية للواتساب وتيليجرام وديسكورد لأتمتة خدماتك وتحسين تفاعل العملاء</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service5-title">تحسين الأداء</h4>
+                    <p class="text-gray-600" id="service5-desc">مواقع سريعة التحميل ومحسنة لمحركات البحث لضمان أفضل ظهور في النتائج</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service6-title">الأمان والحماية</h4>
+                    <p class="text-gray-600" id="service6-desc">حماية متقدمة لموقعك وبيانات عملائك مع أحدث بروتوكولات الأمان</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service7-title">الصيانة والدعم</h4>
+                    <p class="text-gray-600" id="service7-desc">دعم فني مستمر وصيانة دورية لضمان عمل موقعك بأفضل أداء دائماً</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">💼</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service8-title">حلول تجارية</h4>
+                    <p class="text-gray-600" id="service8-desc">متاجر إلكترونية وأنظمة إدارة محتوى مخصصة لاحتياجات عملك</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="text-xl font-semibold mb-4 text-gray-900" id="service9-title">مواقع متجاوبة</h4>
+                    <p class="text-gray-600" id="service9-desc">مواقع تعمل بشكل مثالي على جميع الأجهزة من الهواتف الذكية إلى أجهزة الكمبيوتر</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  </div>
-<!-- واجهة الاشتراك -->
-  <div id="plansSection" class="plans">
-    <div style="width: 100%; display: flex; justify-content: center;">
-  <div class="plan-card" style="background-color: #3a1e1e; border: 2px solid #ff4444; text-align: center; max-width: 500px;">
-    <h3 style="color: #ff4444;">⚠️ تنبيه هام</h3>
-    <p style="color: #f9dada;">
-      إذا لم يتم دفع الرسوم عند نهاية الشهر<br>
-      سيتم إيقاف الموقع مؤقتًا حتى يتم السداد<br><br>
-      <strong style="color: #ffc107">( هذا التحذير مخصص للمستخدمين بنظام الإيجار الشهري )</strong>
-    </p>
-  </div>
-</div>
-    <div class="plan-card">
-      <h3>باقة شهريه البداية</h3>
-      <p>موقع صفحة واحدة</p>
-      <p>توافق مع جميع الأجهزة</p>
-      <p>نموذج تواصل واتساب</p>
-      <p class="price">600 جنيه (إيجار شهري)</p>
-      <p style="color:#ffc107;font-weight:bold;">الشراء الكامل: 2800 جنيه</p>
-      <button class="btn" onclick="openHostingOptions(600)">اطلب الآن</button>
-    </div>
-    <div class="plan-card">
-      <h3>باقة شهريه احترافية</h3>
-      <p>موقع 4 صفحات</p>
-      <p>تصميم مخصص واحترافي</p>
-      <p>نطاق فرعي مجاني</p>
-      <p>نموذج تواصل متكامل</p>
-      <p class="price">900 جنيه (إيجار شهري)</p>
-      <button class="btn" onclick="openHostingOptions(900)">اطلب الآن</button>
-    </div>
-    <div class="plan-card">
-      <h3>باقة متجر إلكتروني شهرياً</h3>
-  <p>موقع متجر منتجات بسيط</p>
-  <p>دفع واتساب / فودافون كاش</p>
-  <p>لوحة تحكم للمنتجات</p>
-  <p>دعم فني 15 يوم</p>
-      <p class="price">1200 جنيه (إيجار شهري)</p>
-      <button class="btn" onclick="openHostingOptions(1200)">اطلب الآن</button>
-    </div>
-    <div class="plan-card">
-      <h3>باقة الشركات شهرياً</h3>
-  <p>موقع متعدد الصفحات</p>
-  <p>لوحة تحكم لإدارة المحتوى</p>
-  <p>نطاق مميز + شهادة SSL</p>
-  <p>ربط بالبريد الإلكتروني المهني</p>
-  <p>دعم فني مستمر لمدة 3 شهور</p>
-      <p class="price">1700 جنيه (إيجار شهري)</p>
-      <button class="btn" onclick="openHostingOptions(1700)">اطلب الآن</button>
-    </div>
-    <div class="plan-card">
-      <h3>باقة المتجر الإلكتروني شهرياً</h3>
-  <p>موقع تجارة إلكترونية متكامل</p>
-  <p>إدارة منتجات + مدفوعات</p>
-  <p>تتبع الطلبات والشحن</p>
-  <p>ربط فوري بوسائل الدفع</p>
-  <p>تصميم احترافي وتجربة مستخدم حديثة</p>
-      <p class="price">2700 جنيه (إيجار شهري)</p>
-      <button class="btn" onclick="openHostingOptions(2700)">اطلب الآن</button>
-    </div>
-  </div>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-bold text-gray-900 mb-6" id="about-title">من نحن</h3>
+                    <p class="text-lg text-gray-600 mb-6" id="about-desc1">
+                        نحن فريق من المطورين والمصممين المتخصصين في إنشاء مواقع إلكترونية احترافية. نؤمن بأن كل عمل يستحق موقعاً إلكترونياً يعكس جودته وتميزه.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8" id="about-desc2">
+                        مع سنوات من الخبرة في هذا المجال، نقدم حلولاً مبتكرة ومخصصة تلبي احتياجات عملائنا وتساعدهم على تحقيق أهدافهم الرقمية.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-indigo-600 mb-2">100+</div>
+                            <div class="text-gray-600" id="stat1">مشروع مكتمل</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-indigo-600 mb-2">7+</div>
+                            <div class="text-gray-600" id="stat2">سنوات خبرة</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-8 text-white">
+                        <div class="text-6xl mb-4">💻</div>
+                        <h4 class="text-2xl font-bold mb-4" id="mission-title">رؤيتنا</h4>
+                        <p class="text-lg" id="mission-desc">
+                            أن نكون الشريك الأول للشركات في رحلتها الرقمية، ونساعدها على بناء حضور قوي ومؤثر على الإنترنت
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    جميع الحقوق محفوظة © موقعك برو 2025
-    <br>
-    <a href="https://m.me/xspeedo.gaming.2025" target="_blank"><button class="btn">إدارة واشراف وتصميم محمد هاني</button></a>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4" id="contact-title">ابدأ مشروعك معنا</h3>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto" id="contact-subtitle">
+                    هل أنت مستعد لإنشاء موقع إلكتروني احترافي؟ تواصل معنا الآن ودعنا نحول فكرتك إلى واقع رقمي مميز
+                </p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-6 bg-white rounded-xl">
+                            <div class="text-3xl mb-3">📧</div>
+                            <h4 class="font-semibold text-gray-900 mb-2" id="email-title">البريد الإلكتروني</h4>
+                            <p class="text-gray-600">info@yoursitepro.com</p>
+                        </div>
+                        
+                        <div class="text-center p-6 bg-white rounded-xl">
+                            <div class="text-3xl mb-3">📱</div>
+                            <h4 class="font-semibold text-gray-900 mb-2" id="phone-title">الهاتف</h4>
+                            <p class="text-gray-600">+20 102 570 2919</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button onclick="showContactForm()" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-indigo-700 transition-colors text-lg" id="contact-btn">
+                            احصل على استشارة مجانية
+                        </button>
+                        <p class="text-sm text-gray-500 mt-4" id="contact-note">
+                            سنتواصل معك خلال 24 ساعة لمناقشة مشروعك
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h4 class="text-2xl font-bold mb-4" id="footer-title">موقعك الإحترافي</h4>
+                <p class="text-gray-400 mb-6" id="footer-desc">نبني مواقع احترافية تميز علامتك التجارية</p>
+                
+                <div class="flex justify-center space-x-6 space-x-reverse mb-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="text-2xl">📘</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="text-2xl">📷</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="text-2xl">🐦</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="text-2xl">💼</span>
+                    </a>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-8">
+                    <p class="text-gray-400" id="copyright">
+                        © 2025 موقعك الإحترافي. جميع الحقوق محفوظة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-let selectedPackage = 0;
-const dollarRate = 48.30;
-
-function showPlans() {
-  const section = document.getElementById("plansSection");
-  if (section.style.display === "none" || section.style.display === "") {
-    section.style.display = "flex";
-  } else {
-    section.style.display = "none";
-  }
-}
-
-function openHostingOptions(packagePrice) {
-  selectedPackage = packagePrice;
-  document.getElementById("popup").style.display = "flex";
-  document.getElementById("totalPrice").innerText = "";
-}
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-  document.getElementById("hostingInfo").innerText = '';
-}
-
-const hostingPlans = {
-  github: [
-    { name: "مجانية - GitHub Basic", price: 0, priceDollar: 0 },
-    { name: "GitHub Pro", price: 100, priceDollar: 3 },
-  ],
-  hostinger: [
-    { name: "Hostinger Starter", price: 150, priceDollar: 5 },
-    { name: "Hostinger Pro", price: 300, priceDollar: 10 },
-  ],
-  free: [
-    { name: "باقة مجانية - InfinityFree", price: 0, priceDollar: 0 },
-    { name: "InfinityFree Premium", price: 120, priceDollar: 4 },
-  ]
-};
-
-function showHostingPlans() {
-  const select = document.getElementById("hostingSelect").value;
-  const planSelect = document.getElementById("planSelect");
-  const plansContainer = document.getElementById("plansContainer");
-  planSelect.innerHTML = "";
-
-  if (!select) {
-    plansContainer.style.display = "none";
-    return;
-  }
-
-  hostingPlans[select].forEach(plan => {
-    const option = document.createElement("option");
-    option.text = `${plan.name} (${plan.price} جنيه / ${plan.priceDollar}$)`;
-    option.value = plan.price;
-    option.setAttribute('data-dollar', plan.priceDollar);
-    planSelect.appendChild(option);
-  });
-
-  plansContainer.style.display = "block";
-  updateTotal();
-}
-
-function updateTotal() {
-  const planPrice = parseInt(document.getElementById("planSelect").value || "0");
-  const total = selectedPackage + planPrice;
-  const payDollar = document.getElementById("payDollar")?.checked || false;
-
-  if (payDollar) {
-    const totalDollar = (total / dollarRate);
-    document.getElementById("totalPrice").innerText =
-      `✅ المبلغ الإجمالي: ${totalDollar.toFixed(2)} دولار (إيجار شهري)`;
-  } else {
-    document.getElementById("totalPrice").innerText =
-      `✅ المبلغ الإجمالي: ${total} جنيه (إيجار شهري)`;
-  }
-}
-
-function confirmOrder() {
-  const planSelect = document.getElementById("planSelect");
-  const planPrice = parseInt(planSelect.value || "0");
-  const payDollar = document.getElementById("payDollar")?.checked || false;
-
-  const total = selectedPackage + planPrice;
-  const totalDollar = (total / dollarRate);
-
-  let message = `✅ <strong>الخطة المختارة:</strong> ${selectedPackage} + استضافة ${planPrice}<br><br>`;
-
-if (payDollar) {
-  const buyoutDollar = totalDollar * 7;
-  message += `💰 المبلغ الإجمالي: ${totalDollar.toFixed(2)} دولار (إيجار شهري)<br>`;
-  message += `🛒 سعر الشراء الكامل: ${buyoutDollar.toFixed(2)} دولار (مرة واحدة فقط)<br><br>`;
-} else {
-  const buyoutEgp = total * 7;
-  message += `💰 المبلغ الإجمالي: ${total} جنيه (إيجار شهري)<br>`;
-  message += `🛒 سعر الشراء الكامل: ${buyoutEgp} جنيه (مرة واحدة فقط)<br><br>`;
-}
-
-message += `<hr>
-<strong>ملاحظات هامة:</strong><br>
-- السعر الشهري هو للإيجار فقط، ويشمل الدعم الفني والتحديثات.<br>
-- عند <span style="color:#ffc107;">الشراء الكامل</span> يتم التخلي عن إدارة الموقع نهائيًا، 
-ويتم تسليمك جميع الملفات بصيغة <strong>.zip</strong> لتصبح تحت إدارتك الكاملة.<br>
-- بعد الشراء الكامل، لن يكون الموقع تحت إدارتنا أو مسؤوليتنا.<br>
-- يمكنك رفع الموقع على أي استضافة من اختيارك بعد استلام الملفات.<br>
-`;
-
-
-
-  document.getElementById("orderDetails").innerHTML = message;
-  document.getElementById("finalMessage").style.display = "flex";
-}
-function copyOrderDetails() {
-  const details = document.getElementById("orderDetails").innerText;
-  navigator.clipboard.writeText(details).then(() => {
-    alert("✅ تم نسخ تفاصيل طلبك بنجاح!");
-  }).catch(err => {
-    alert("❌ حدث خطأ أثناء النسخ");
-    console.error(err);
-  });
-}
-
-</script>
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <h3>اختر نوع الاستضافة</h3>
-    <select id="hostingSelect" onchange="showHostingPlans()" required>
-      <option value="" selected>-- اختر الاستضافة --</option>
-      <option value="github">GitHub Pages</option>
-      <option value="hostinger">Hostinger</option>
-      <option value="free">InfinityFree</option>
-    </select>
-
-    <div id="plansContainer" style="margin-top: 15px; display: none;">
-      <h4>اختر خطة الاستضافة</h4>
-      <select id="planSelect" onchange="updateTotal()"></select>
-    </div>
-
-    <div id="totalPrice" style="margin-top: 15px; font-weight: bold;"></div>
-
-    <div style="margin-top:10px;">
-      <label><input type="checkbox" id="payDollar" onchange="updateTotal()">الدفع بالدولار</label>
-    </div>
-    <button class="btn" onclick="confirmOrder()" style="margin-top: 15px;">إتمام الطلب</button>
-    <button class="close-popup" onclick="closePopup()">إغلاق</button>
-  </div>
-</div>
-
-<div id="finalMessage" class="popup" style="display: none;">
-  <div class="popup-content">
-    <h3>💡 تفاصيل طلبك</h3>
-
-    <div id="orderDetails"></div>
-    <button class="btn" onclick="copyOrderDetails()">نسخ تفاصيل الطلب</button>
-    <button class="callme" onclick="window.open('https://m.me/61579864318086', '_blank')">تواصل معانا لتأكيد الطلب 📱</button>
-    <button class="close-popup" onclick="document.getElementById('finalMessage').style.display='none'">إغلاق</button>
-  </div>
-</div>
-
-</body>
-
+    <script>
+        let isArabic = true;
+        
+        const translations = {
+            ar: {
+                logo: "موقعك الإحترافي",
+                navHome: "الرئيسية",
+                navServices: "الخدمات", 
+                navAbout: "من نحن",
+                navContact: "اتصل بنا",
+                langBtn: "English",
+                heroTitle: "نبني مواقع احترافية تميز علامتك التجارية",
+                heroSubtitle: "نحن فريق من المطورين والمصممين المحترفين نساعدك في إنشاء موقع إلكتروني متميز يعكس هويتك ويحقق أهدافك التجارية",
+                ctaPrimary: "ابدأ مشروعك الآن",
+                ctaSecondary: "تعرف على خدماتنا",
+                servicesTitle: "خدماتنا المتميزة",
+                servicesSubtitle: "نقدم حلول شاملة لتطوير المواقع الإلكترونية بأحدث التقنيات والمعايير العالمية",
+                service1Title: "تصميم مواقع احترافية",
+                service1Desc: "تصاميم عصرية وجذابة تتناسب مع هوية علامتك التجارية وتوفر تجربة مستخدم مميزة",
+                service2Title: "تطبيقات الهاتف",
+                service2Desc: "تطوير تطبيقات احترافية للأيفون والأندرويد بأحدث التقنيات وأفضل الممارسات",
+                service3Title: "برامج الكمبيوتر",
+                service3Desc: "تطوير برامج سطح المكتب لأنظمة ويندوز وماك ولينكس حسب احتياجاتك",
+                service4Title: "تصميم البوتات",
+                service4Desc: "بوتات ذكية للواتساب وتيليجرام وديسكورد لأتمتة خدماتك وتحسين تفاعل العملاء",
+                service5Title: "تحسين الأداء",
+                service5Desc: "مواقع سريعة التحميل ومحسنة لمحركات البحث لضمان أفضل ظهور في النتائج",
+                service6Title: "الأمان والحماية",
+                service6Desc: "حماية متقدمة لموقعك وبيانات عملائك مع أحدث بروتوكولات الأمان",
+                service7Title: "الصيانة والدعم",
+                service7Desc: "دعم فني مستمر وصيانة دورية لضمان عمل موقعك بأفضل أداء دائماً",
+                service8Title: "حلول تجارية",
+                service8Desc: "متاجر إلكترونية وأنظمة إدارة محتوى مخصصة لاحتياجات عملك",
+                service9Title: "مواقع متجاوبة",
+                service9Desc: "مواقع تعمل بشكل مثالي على جميع الأجهزة من الهواتف الذكية إلى أجهزة الكمبيوتر",
+                aboutTitle: "من نحن",
+                aboutDesc1: "نحن فريق من المطورين والمصممين المتخصصين في إنشاء مواقع إلكترونية احترافية. نؤمن بأن كل عمل يستحق موقعاً إلكترونياً يعكس جودته وتميزه.",
+                aboutDesc2: "مع سنوات من الخبرة في هذا المجال، نقدم حلولاً مبتكرة ومخصصة تلبي احتياجات عملائنا وتساعدهم على تحقيق أهدافهم الرقمية.",
+                stat1: "مشروع مكتمل",
+                stat2: "سنوات خبرة",
+                missionTitle: "رؤيتنا",
+                missionDesc: "أن نكون الشريك الأول للشركات في رحلتها الرقمية، ونساعدها على بناء حضور قوي ومؤثر على الإنترنت",
+                contactTitle: "ابدأ مشروعك معنا",
+                contactSubtitle: "هل أنت مستعد لإنشاء موقع إلكتروني احترافي؟ تواصل معنا الآن ودعنا نحول فكرتك إلى واقع رقمي مميز",
+                emailTitle: "البريد الإلكتروني",
+                phoneTitle: "الهاتف",
+                contactBtn: "احصل على استشارة مجانية",
+                contactNote: "سنتواصل معك خلال 24 ساعة لمناقشة مشروعك",
+                footerTitle: "موقعك الإحترافي",
+                footerDesc: "نبني مواقع احترافية تميز علامتك التجارية",
+                copyright: "© 2025 موقعك الإحترافي. جميع الحقوق محفوظة."
+            },
+            en: {
+                logo: "Your Site Pro",
+                navHome: "Home",
+                navServices: "Services",
+                navAbout: "About",
+                navContact: "Contact",
+                langBtn: "العربية",
+                heroTitle: "We Build Professional Websites That Distinguish Your Brand",
+                heroSubtitle: "We are a team of professional developers and designers helping you create an outstanding website that reflects your identity and achieves your business goals",
+                ctaPrimary: "Start Your Project Now",
+                ctaSecondary: "Explore Our Services",
+                servicesTitle: "Our Premium Services",
+                servicesSubtitle: "We provide comprehensive solutions for web development using the latest technologies and international standards",
+                service1Title: "Professional Web Design",
+                service1Desc: "Modern and attractive designs that match your brand identity and provide an exceptional user experience",
+                service2Title: "Mobile Applications",
+                service2Desc: "Professional app development for iPhone and Android using the latest technologies and best practices",
+                service3Title: "Desktop Software",
+                service3Desc: "Desktop application development for Windows, Mac, and Linux systems according to your needs",
+                service4Title: "Bot Development",
+                service4Desc: "Smart bots for WhatsApp, Telegram, and Discord to automate your services and improve customer engagement",
+                service5Title: "Performance Optimization",
+                service5Desc: "Fast-loading websites optimized for search engines to ensure the best visibility in results",
+                service6Title: "Security & Protection",
+                service6Desc: "Advanced protection for your website and customer data with the latest security protocols",
+                service7Title: "Maintenance & Support",
+                service7Desc: "Continuous technical support and regular maintenance to ensure your website always performs at its best",
+                service8Title: "Business Solutions",
+                service8Desc: "E-commerce stores and custom content management systems tailored to your business needs",
+                service9Title: "Responsive Websites",
+                service9Desc: "Websites that work perfectly on all devices from smartphones to desktop computers",
+                aboutTitle: "About Us",
+                aboutDesc1: "We are a team of developers and designers specialized in creating professional websites. We believe that every business deserves a website that reflects its quality and excellence.",
+                aboutDesc2: "With years of experience in this field, we provide innovative and customized solutions that meet our clients' needs and help them achieve their digital goals.",
+                stat1: "Completed Projects",
+                stat2: "Years of Experience",
+                missionTitle: "Our Vision",
+                missionDesc: "To be the first partner for companies in their digital journey, helping them build a strong and influential presence on the internet",
+                contactTitle: "Start Your Project With Us",
+                contactSubtitle: "Are you ready to create a professional website? Contact us now and let us turn your idea into a distinctive digital reality",
+                emailTitle: "Email",
+                phoneTitle: "Phone",
+                contactBtn: "Get Free Consultation",
+                contactNote: "We will contact you within 24 hours to discuss your project",
+                footerTitle: "Your Site Pro",
+                footerDesc: "We build professional websites that distinguish your brand",
+                copyright: "© 2025 Your Site Pro. All rights reserved."
+            }
+        };
+        
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const lang = isArabic ? 'ar' : 'en';
+            const body = document.getElementById('body');
+            
+            // Update direction and language
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+            body.className = isArabic ? 'bg-gray-50 arabic' : 'bg-gray-50 english';
+            
+            // Update all text content
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key.replace(/([A-Z])/g, '-$1').toLowerCase());
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update specific elements with different IDs
+            const elementMap = {
+                'logo': 'logo',
+                'nav-home': 'navHome',
+                'nav-services': 'navServices',
+                'nav-about': 'navAbout',
+                'nav-contact': 'navContact',
+                'lang-btn': 'langBtn',
+                'hero-title': 'heroTitle',
+                'hero-subtitle': 'heroSubtitle',
+                'cta-primary': 'ctaPrimary',
+                'cta-secondary': 'ctaSecondary',
+                'services-title': 'servicesTitle',
+                'services-subtitle': 'servicesSubtitle',
+                'service1-title': 'service1Title',
+                'service1-desc': 'service1Desc',
+                'service2-title': 'service2Title',
+                'service2-desc': 'service2Desc',
+                'service3-title': 'service3Title',
+                'service3-desc': 'service3Desc',
+                'service4-title': 'service4Title',
+                'service4-desc': 'service4Desc',
+                'service5-title': 'service5Title',
+                'service5-desc': 'service5Desc',
+                'service6-title': 'service6Title',
+                'service6-desc': 'service6Desc',
+                'service7-title': 'service7Title',
+                'service7-desc': 'service7Desc',
+                'service8-title': 'service8Title',
+                'service8-desc': 'service8Desc',
+                'service9-title': 'service9Title',
+                'service9-desc': 'service9Desc',
+                'about-title': 'aboutTitle',
+                'about-desc1': 'aboutDesc1',
+                'about-desc2': 'aboutDesc2',
+                'stat1': 'stat1',
+                'stat2': 'stat2',
+                'mission-title': 'missionTitle',
+                'mission-desc': 'missionDesc',
+                'contact-title': 'contactTitle',
+                'contact-subtitle': 'contactSubtitle',
+                'email-title': 'emailTitle',
+                'phone-title': 'phoneTitle',
+                'contact-btn': 'contactBtn',
+                'contact-note': 'contactNote',
+                'footer-title': 'footerTitle',
+                'footer-desc': 'footerDesc',
+                'copyright': 'copyright'
+            };
+            
+            Object.keys(elementMap).forEach(elementId => {
+                const element = document.getElementById(elementId);
+                const translationKey = elementMap[elementId];
+                if (element && translations[lang][translationKey]) {
+                    element.textContent = translations[lang][translationKey];
+                }
+            });
+        }
+        
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function showContactForm() {
+          window.location.href = 'https://www.facebook.com/profile.php?id=61579864318086#';
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe service cards and other elements
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ea1cd5e00c29c2',t:'MTc1Nzc5MjM4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
