@@ -1,105 +1,1365 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
-  <title>أعمالنا | موقعك برو</title>
-  <style>
-    body {
-      font-family: "Tahoma", sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      direction: rtl;
-      text-align: center;
-    }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 20px;
-      font-size: 24px;
-    }
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 15px;
-    }
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .reviews {
-      background: #eee;
-      padding: 20px;
-      margin-top: 20px;
-    }
-    .review {
-      background: #fff;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .contact {
-      margin: 30px 0;
-    }
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-size: 16px;
-      text-decoration: none;
-      color: #fff;
-    }
-    .messenger { background: #1877f2; }
-    .whatsapp { background: #25d366; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+    <title>موقعك برو - أعمالنا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .project-item {
+            transition: all 0.3s ease;
+        }
+        
+        .project-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">موقعك برو</h1>
+            <p class="text-xl mb-8">نحول أفكارك إلى مواقع رقمية مذهلة</p>
+            <div class="flex justify-center items-center space-x-reverse space-x-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold">150+</div>
+                    <div class="text-sm opacity-90">مشروع مكتمل</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">5</div>
+                    <div class="text-sm opacity-90">سنوات خبرة</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">100%</div>
+                    <div class="text-sm opacity-90">رضا العملاء</div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <header>📂 أعمالنا</header>
+    <!-- Filter Buttons -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg" data-filter="all">
+                    جميع الأعمال
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg" data-filter="ecommerce">
+                    متاجر إلكترونية
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg" data-filter="corporate">
+                    مواقع شركات
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg" data-filter="portfolio">
+                    معارض أعمال
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg" data-filter="blog">
+                    مدونات
+                </button>
+            </div>
 
-  <!-- قسم الأعمال -->
-  <section class="portfolio">
-    <div class="card">
-      <img src="https://cdn.shopify.com/s/files/1/0070/7032/articles/beautiful_20websites.png?v=1741706179" alt="موقع تجريبي 1">
-      <h3>موقع تجريبي 1</h3>
-      <p>تصميم متجر إلكتروني متكامل.</p>
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                <!-- E-commerce Project 1 -->
+                <div class="project-item card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-category="ecommerce">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-4xl mb-2">🛒</div>
+                            <div class="text-lg font-semibold">متجر الأزياء العصرية</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">متجر الأزياء العصرية</h3>
+                        <p class="text-gray-600 mb-4">متجر إلكتروني متكامل للأزياء النسائية مع نظام دفع آمن وإدارة المخزون</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 rounded-lg hover:opacity-90 transition-opacity">
+                            عرض المشروع
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Corporate Project 1 -->
+                <div class="project-item card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-category="corporate">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-4xl mb-2">🏢</div>
+                            <div class="text-lg font-semibold">شركة التقنيات المتقدمة</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">شركة التقنيات المتقدمة</h3>
+                        <p class="text-gray-600 mb-4">موقع شركة احترافي مع عرض الخدمات ونظام إدارة المحتوى</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">WordPress</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">PHP</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">MySQL</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-2 rounded-lg hover:opacity-90 transition-opacity">
+                            عرض المشروع
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Portfolio Project 1 -->
+                <div class="project-item card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-category="portfolio">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-4xl mb-2">🎨</div>
+                            <div class="text-lg font-semibold">معرض المصور أحمد</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">معرض المصور أحمد</h3>
+                        <p class="text-gray-600 mb-4">معرض أعمال تفاعلي للمصور مع معرض صور ونظام حجز الجلسات</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm">CSS3</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-2 rounded-lg hover:opacity-90 transition-opacity">
+                            عرض المشروع
+                        </button>
+                    </div>
+                </div>
+
+                <!-- E-commerce Project 2 - Restaurant -->
+                <div class="project-item card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-category="ecommerce">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-4xl mb-2">🍕</div>
+                            <div class="text-lg font-semibold">مطعم الذواقة</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">مطعم الذواقة</h3>
+                        <p class="text-gray-600 mb-4">منصة طلب طعام أونلاين مع نظام تتبع الطلبات والدفع الإلكتروني</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Laravel</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">MySQL</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-2 rounded-lg hover:opacity-90 transition-opacity">
+                            عرض المشروع
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Blog Project 1 -->
+                <div class="project-item card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-category="blog">
+                    <div class="h-48 bg-gradient-to-br from-teal-400 to-green-500 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-4xl mb-2">📝</div>
+                            <div class="text-lg font-semibold">مدونة التقنية</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">مدونة التقنية</h3>
+                        <p class="text-gray-600 mb-4">مدونة تقنية شخصية مع نظام إدارة المقالات والتعليقات</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Gatsby</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">GraphQL</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Netlify</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-teal-500 to-green-600 text-white py-2 rounded-lg hover:opacity-90 transition-opacity">
+                            عرض المشروع
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Corporate Project 2 - Clinic -->
+                <div class="project-item card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-category="corporate">
+                    <div class="h-48 bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-4xl mb-2">🏥</div>
+                            <div class="text-lg font-semibold">عيادة الدكتور محمد</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">عيادة الدكتور محمد</h3>
+                        <p class="text-gray-600 mb-4">موقع عيادة طبية مع نظام حجز المواعيد وإدارة المرضى</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Django</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">PostgreSQL</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 rounded-lg hover:opacity-90 transition-opacity">
+                            عرض المشروع
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">هل لديك مشروع في ذهنك؟</h2>
+            <p class="text-xl mb-8">دعنا نحوله إلى واقع رقمي مذهل</p>
+            <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                ابدأ مشروعك الآن
+            </button>
+        </div>
+    </section>
+
+    <!-- Restaurant Website Modal -->
+    <div id="restaurantModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg w-full max-w-6xl max-h-[90vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-orange-600">مطعم الذواقة</h2>
+                    <button id="closeRestaurantModal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                
+                <!-- Restaurant Website Content -->
+                <div class="restaurant-website">
+                    <!-- Hero Section -->
+                    <section class="bg-gradient-to-r from-orange-500 to-red-600 text-white py-16">
+                        <div class="container mx-auto px-6 text-center">
+                            <div class="text-6xl mb-4">🍕</div>
+                            <h1 class="text-5xl font-bold mb-4">مطعم الذواقة</h1>
+                            <p class="text-xl mb-8">أشهى الأطباق العربية والعالمية</p>
+                            <button class="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                اطلب الآن
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Menu Categories -->
+                    <section class="py-12">
+                        <div class="container mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-8">قائمة الطعام</h2>
+                            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                                <button class="menu-filter active bg-orange-500 text-white px-6 py-2 rounded-full" data-category="all">
+                                    جميع الأطباق
+                                </button>
+                                <button class="menu-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white" data-category="appetizers">
+                                    المقبلات
+                                </button>
+                                <button class="menu-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white" data-category="main">
+                                    الأطباق الرئيسية
+                                </button>
+                                <button class="menu-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white" data-category="desserts">
+                                    الحلويات
+                                </button>
+                                <button class="menu-filter bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white" data-category="drinks">
+                                    المشروبات
+                                </button>
+                            </div>
+
+                            <!-- Menu Items -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menuItems">
+                                <!-- Appetizers -->
+                                <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden" data-category="appetizers">
+                                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🥗</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold mb-2">سلطة الذواقة الخاصة</h3>
+                                        <p class="text-gray-600 mb-3">سلطة مشكلة مع الخضار الطازجة وصوص الذواقة السري</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-2xl font-bold text-orange-600">25 ريال</span>
+                                            <button class="add-to-cart bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                                                أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden" data-category="appetizers">
+                                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🍤</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold mb-2">جمبري مقلي</h3>
+                                        <p class="text-gray-600 mb-3">جمبري طازج مقلي مع البهارات الخاصة</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-2xl font-bold text-orange-600">45 ريال</span>
+                                            <button class="add-to-cart bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                                                أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Main Dishes -->
+                                <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden" data-category="main">
+                                    <div class="h-48 bg-gradient-to-br from-red-400 to-pink-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🍖</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold mb-2">ستيك اللحم المشوي</h3>
+                                        <p class="text-gray-600 mb-3">قطعة لحم طرية مشوية مع الخضار والبطاطس</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-2xl font-bold text-orange-600">85 ريال</span>
+                                            <button class="add-to-cart bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                                                أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden" data-category="main">
+                                    <div class="h-48 bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🍗</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold mb-2">دجاج مشوي بالأعشاب</h3>
+                                        <p class="text-gray-600 mb-3">دجاج كامل مشوي بالأعشاب الطبيعية والليمون</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-2xl font-bold text-orange-600">65 ريال</span>
+                                            <button class="add-to-cart bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                                                أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Desserts -->
+                                <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden" data-category="desserts">
+                                    <div class="h-48 bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🍰</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold mb-2">كيك الشوكولاتة</h3>
+                                        <p class="text-gray-600 mb-3">كيك الشوكولاتة الفاخر مع الكريمة الطازجة</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-2xl font-bold text-orange-600">30 ريال</span>
+                                            <button class="add-to-cart bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                                                أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Drinks -->
+                                <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden" data-category="drinks">
+                                    <div class="h-48 bg-gradient-to-br from-blue-400 to-green-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🥤</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold mb-2">عصير طازج مشكل</h3>
+                                        <p class="text-gray-600 mb-3">عصائر طبيعية طازجة من الفواكه الموسمية</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-2xl font-bold text-orange-600">15 ريال</span>
+                                            <button class="add-to-cart bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                                                أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cart Section -->
+                    <section class="bg-gray-100 py-8">
+                        <div class="container mx-auto px-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-2xl font-bold mb-4 flex items-center">
+                                    🛒 سلة الطلبات
+                                    <span id="cartCount" class="bg-orange-500 text-white rounded-full px-2 py-1 text-sm mr-2">0</span>
+                                </h3>
+                                <div id="cartItems" class="space-y-3">
+                                    <p class="text-gray-500 text-center py-8">السلة فارغة</p>
+                                </div>
+                                <div class="border-t pt-4 mt-4">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <span class="text-xl font-bold">المجموع:</span>
+                                        <span id="totalPrice" class="text-2xl font-bold text-orange-600">0 ريال</span>
+                                    </div>
+                                    <button id="checkoutBtn" class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-300" disabled>
+                                        إتمام الطلب
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Info -->
+                    <section class="bg-orange-500 text-white py-8">
+                        <div class="container mx-auto px-6 text-center">
+                            <h3 class="text-2xl font-bold mb-4">تواصل معنا</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <div class="text-3xl mb-2">📞</div>
+                                    <p>920001234</p>
+                                </div>
+                                <div>
+                                    <div class="text-3xl mb-2">📍</div>
+                                    <p>الرياض - حي الملز</p>
+                                </div>
+                                <div>
+                                    <div class="text-3xl mb-2">⏰</div>
+                                    <p>يومياً من 11 ص إلى 12 م</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card">
-      <img src="https://baymard-assets.imgix.net/benchmark_webpages/screenshots/18135/original/slack_feature-page-2-a641baeea252a75546113c223597c7b1.png?auto=format&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0&h=3840&q=50&w=3840" alt="موقع تجريبي 2">
-      <h3>موقع تجريبي 2</h3>
-      <p>موقع شركة بخدمات احترافية.</p>
+    
+    <!-- Tech Blog Website Modal -->
+    <div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg w-full max-w-6xl max-h-[90vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-teal-600">مدونة التقنية</h2>
+                    <button id="closeBlogModal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                
+                <!-- Blog Website Content -->
+                <div class="blog-website">
+                    <!-- Hero Section -->
+                    <section class="bg-gradient-to-r from-teal-500 to-green-600 text-white py-16">
+                        <div class="container mx-auto px-6 text-center">
+                            <div class="text-6xl mb-4">💻</div>
+                            <h1 class="text-5xl font-bold mb-4">مدونة التقنية</h1>
+                            <p class="text-xl mb-8">آخر أخبار التقنية والبرمجة والذكاء الاصطناعي</p>
+                            <div class="flex justify-center gap-4">
+                                <button class="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    اشترك في النشرة
+                                </button>
+                                <button class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-colors">
+                                    تصفح المقالات
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Categories -->
+                    <section class="py-8 bg-gray-50">
+                        <div class="container mx-auto px-6">
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <button class="blog-filter active bg-teal-500 text-white px-6 py-2 rounded-full" data-category="all">
+                                    جميع المقالات
+                                </button>
+                                <button class="blog-filter bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-teal-500 hover:text-white shadow-md" data-category="ai">
+                                    الذكاء الاصطناعي
+                                </button>
+                                <button class="blog-filter bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-teal-500 hover:text-white shadow-md" data-category="programming">
+                                    البرمجة
+                                </button>
+                                <button class="blog-filter bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-teal-500 hover:text-white shadow-md" data-category="web">
+                                    تطوير الويب
+                                </button>
+                                <button class="blog-filter bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-teal-500 hover:text-white shadow-md" data-category="mobile">
+                                    تطبيقات الجوال
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Featured Article -->
+                    <section class="py-12">
+                        <div class="container mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-8">المقال المميز</h2>
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-4xl mx-auto">
+                                <div class="h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                    <div class="text-white text-center">
+                                        <div class="text-8xl mb-4">🤖</div>
+                                        <h3 class="text-2xl font-bold">مستقبل الذكاء الاصطناعي في 2024</h3>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">الذكاء الاصطناعي</span>
+                                        <span class="text-gray-500">15 ديسمبر 2024</span>
+                                        <span class="text-gray-500">• 5 دقائق قراءة</span>
+                                    </div>
+                                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                                        يشهد عالم الذكاء الاصطناعي تطورات مذهلة في عام 2024، من تطوير نماذج اللغة الكبيرة إلى التطبيقات العملية في مختلف المجالات. في هذا المقال نستكشف أحدث الاتجاهات والتقنيات التي ستشكل مستقبل هذا المجال المثير...
+                                    </p>
+                                    <button class="bg-teal-500 text-white px-6 py-3 rounded-lg hover:bg-teal-600 transition-colors">
+                                        اقرأ المقال كاملاً
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Blog Posts Grid -->
+                    <section class="py-12 bg-gray-50">
+                        <div class="container mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-8">أحدث المقالات</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogPosts">
+                                
+                                <!-- AI Article -->
+                                <article class="blog-post bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="ai">
+                                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🧠</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">الذكاء الاصطناعي</span>
+                                            <span class="text-gray-500 text-sm">10 ديسمبر 2024</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-3">كيف تعمل الشبكات العصبية؟</h3>
+                                        <p class="text-gray-600 mb-4">دليل شامل لفهم آلية عمل الشبكات العصبية الاصطناعية وتطبيقاتها في التعلم العميق</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-gray-500">3 دقائق قراءة</span>
+                                            <button class="text-teal-600 hover:text-teal-800 font-semibold">اقرأ المزيد ←</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Programming Article -->
+                                <article class="blog-post bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="programming">
+                                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">⚡</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">البرمجة</span>
+                                            <span class="text-gray-500 text-sm">8 ديسمبر 2024</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-3">أفضل ممارسات البرمجة النظيفة</h3>
+                                        <p class="text-gray-600 mb-4">تعلم كيفية كتابة كود نظيف وقابل للقراءة والصيانة باستخدام أفضل الممارسات</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-gray-500">7 دقائق قراءة</span>
+                                            <button class="text-teal-600 hover:text-teal-800 font-semibold">اقرأ المزيد ←</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Web Development Article -->
+                                <article class="blog-post bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="web">
+                                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🌐</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">تطوير الويب</span>
+                                            <span class="text-gray-500 text-sm">5 ديسمبر 2024</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-3">مقدمة في React 18</h3>
+                                        <p class="text-gray-600 mb-4">استكشف الميزات الجديدة في React 18 وكيفية الاستفادة منها في مشاريعك</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-gray-500">6 دقائق قراءة</span>
+                                            <button class="text-teal-600 hover:text-teal-800 font-semibold">اقرأ المزيد ←</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Mobile Development Article -->
+                                <article class="blog-post bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="mobile">
+                                    <div class="h-48 bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">📱</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">تطبيقات الجوال</span>
+                                            <span class="text-gray-500 text-sm">3 ديسمبر 2024</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-3">Flutter vs React Native</h3>
+                                        <p class="text-gray-600 mb-4">مقارنة شاملة بين أشهر إطارات تطوير التطبيقات متعددة المنصات</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-gray-500">8 دقائق قراءة</span>
+                                            <button class="text-teal-600 hover:text-teal-800 font-semibold">اقرأ المزيد ←</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- AI Article 2 -->
+                                <article class="blog-post bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="ai">
+                                    <div class="h-48 bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🔮</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm">الذكاء الاصطناعي</span>
+                                            <span class="text-gray-500 text-sm">1 ديسمبر 2024</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-3">ChatGPT وثورة المحادثة</h3>
+                                        <p class="text-gray-600 mb-4">كيف غيرت نماذج اللغة الكبيرة طريقة تفاعلنا مع التقنية</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-gray-500">4 دقائق قراءة</span>
+                                            <button class="text-teal-600 hover:text-teal-800 font-semibold">اقرأ المزيد ←</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Programming Article 2 -->
+                                <article class="blog-post bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="programming">
+                                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                                        <div class="text-white text-6xl">🐍</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-2 mb-3">
+                                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">البرمجة</span>
+                                            <span class="text-gray-500 text-sm">28 نوفمبر 2024</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-3">Python للمبتدئين</h3>
+                                        <p class="text-gray-600 mb-4">دليل شامل لتعلم لغة البرمجة الأكثر شعبية في العالم</p>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-gray-500">10 دقائق قراءة</span>
+                                            <button class="text-teal-600 hover:text-teal-800 font-semibold">اقرأ المزيد ←</button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Newsletter Section -->
+                    <section class="bg-teal-500 text-white py-16">
+                        <div class="container mx-auto px-6 text-center">
+                            <h2 class="text-3xl font-bold mb-4">اشترك في النشرة الإخبارية</h2>
+                            <p class="text-xl mb-8">احصل على آخر المقالات والأخبار التقنية مباشرة في بريدك الإلكتروني</p>
+                            <div class="max-w-md mx-auto flex gap-4">
+                                <input type="email" placeholder="بريدك الإلكتروني" class="flex-1 px-4 py-3 rounded-lg text-gray-800">
+                                <button class="bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    اشترك
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer class="bg-gray-800 text-white py-12">
+                        <div class="container mx-auto px-6">
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4">مدونة التقنية</h3>
+                                    <p class="text-gray-400">مصدرك الموثوق لآخر أخبار التقنية والبرمجة</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-4">الأقسام</h4>
+                                    <ul class="space-y-2 text-gray-400">
+                                        <li><a href="#" class="hover:text-white">الذكاء الاصطناعي</a></li>
+                                        <li><a href="#" class="hover:text-white">البرمجة</a></li>
+                                        <li><a href="#" class="hover:text-white">تطوير الويب</a></li>
+                                        <li><a href="#" class="hover:text-white">تطبيقات الجوال</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-4">روابط مفيدة</h4>
+                                    <ul class="space-y-2 text-gray-400">
+                                        <li><a href="#" class="hover:text-white">عن المدونة</a></li>
+                                        <li><a href="#" class="hover:text-white">اتصل بنا</a></li>
+                                        <li><a href="#" class="hover:text-white">سياسة الخصوصية</a></li>
+                                        <li><a href="#" class="hover:text-white">شروط الاستخدام</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-4">تابعنا</h4>
+                                    <div class="flex gap-4">
+                                        <a href="#" class="text-2xl hover:text-teal-400">📧</a>
+                                        <a href="#" class="text-2xl hover:text-teal-400">🐦</a>
+                                        <a href="#" class="text-2xl hover:text-teal-400">📘</a>
+                                        <a href="#" class="text-2xl hover:text-teal-400">📷</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                                <p>&copy; 2024 مدونة التقنية. جميع الحقوق محفوظة.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card">
-      <img src="https://htmlburger.com/blog/wp-content/uploads/2023/04/modern-websites-design-example-ptect.jpg" alt="موقع تجريبي 3">
-      <h3>موقع تجريبي 3</h3>
-      <p>مدونة شخصية متجاوبة مع الجوال.</p>
+
+    <!-- Clinic Website Modal -->
+    <div id="clinicModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg w-full max-w-6xl max-h-[90vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-indigo-600">عيادة الدكتور محمد</h2>
+                    <button id="closeClinicModal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                
+                <!-- Clinic Website Content -->
+                <div class="clinic-website">
+                    <!-- Hero Section -->
+                    <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-16">
+                        <div class="container mx-auto px-6 text-center">
+                            <div class="text-6xl mb-4">🏥</div>
+                            <h1 class="text-5xl font-bold mb-4">عيادة الدكتور محمد</h1>
+                            <p class="text-xl mb-8">رعاية طبية متميزة وخدمات صحية شاملة</p>
+                            <div class="flex justify-center gap-4">
+                                <button class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    احجز موعد
+                                </button>
+                                <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition-colors">
+                                    تواصل معنا
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Services Section -->
+                    <section class="py-16">
+                        <div class="container mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-12">خدماتنا الطبية</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                                    <div class="text-5xl mb-4">🩺</div>
+                                    <h3 class="text-xl font-bold mb-3">الفحص العام</h3>
+                                    <p class="text-gray-600 mb-4">فحص طبي شامل للكشف المبكر عن الأمراض</p>
+                                    <div class="text-2xl font-bold text-indigo-600 mb-4">150 ريال</div>
+                                    <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                        احجز الآن
+                                    </button>
+                                </div>
+
+                                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                                    <div class="text-5xl mb-4">❤️</div>
+                                    <h3 class="text-xl font-bold mb-3">فحص القلب</h3>
+                                    <p class="text-gray-600 mb-4">فحص شامل للقلب والأوعية الدموية</p>
+                                    <div class="text-2xl font-bold text-indigo-600 mb-4">300 ريال</div>
+                                    <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                        احجز الآن
+                                    </button>
+                                </div>
+
+                                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                                    <div class="text-5xl mb-4">🧪</div>
+                                    <h3 class="text-xl font-bold mb-3">التحاليل المخبرية</h3>
+                                    <p class="text-gray-600 mb-4">تحاليل شاملة للدم والبول والهرمونات</p>
+                                    <div class="text-2xl font-bold text-indigo-600 mb-4">200 ريال</div>
+                                    <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                        احجز الآن
+                                    </button>
+                                </div>
+
+                                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                                    <div class="text-5xl mb-4">🦴</div>
+                                    <h3 class="text-xl font-bold mb-3">فحص العظام</h3>
+                                    <p class="text-gray-600 mb-4">تشخيص وعلاج مشاكل العظام والمفاصل</p>
+                                    <div class="text-2xl font-bold text-indigo-600 mb-4">250 ريال</div>
+                                    <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                        احجز الآن
+                                    </button>
+                                </div>
+
+                                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                                    <div class="text-5xl mb-4">👁️</div>
+                                    <h3 class="text-xl font-bold mb-3">فحص العيون</h3>
+                                    <p class="text-gray-600 mb-4">فحص شامل للعيون وقياس النظر</p>
+                                    <div class="text-2xl font-bold text-indigo-600 mb-4">180 ريال</div>
+                                    <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                        احجز الآن
+                                    </button>
+                                </div>
+
+                                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                                    <div class="text-5xl mb-4">🧠</div>
+                                    <h3 class="text-xl font-bold mb-3">الاستشارة النفسية</h3>
+                                    <p class="text-gray-600 mb-4">جلسات استشارية للصحة النفسية</p>
+                                    <div class="text-2xl font-bold text-indigo-600 mb-4">220 ريال</div>
+                                    <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                        احجز الآن
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Appointment Booking Section -->
+                    <section class="bg-gray-50 py-16">
+                        <div class="container mx-auto px-6">
+                            <div class="max-w-4xl mx-auto">
+                                <h2 class="text-3xl font-bold text-center mb-8">حجز موعد</h2>
+                                <div class="bg-white rounded-lg shadow-lg p-8">
+                                    <form id="appointmentForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">الاسم الكامل</label>
+                                            <input type="text" id="patientName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="أدخل اسمك الكامل" required>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">رقم الهاتف</label>
+                                            <input type="tel" id="patientPhone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="05xxxxxxxx" required>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني</label>
+                                            <input type="email" id="patientEmail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="example@email.com">
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">العمر</label>
+                                            <input type="number" id="patientAge" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="العمر" min="1" max="120">
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">نوع الخدمة</label>
+                                            <select id="serviceType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" required>
+                                                <option value="">اختر نوع الخدمة</option>
+                                                <option value="general">الفحص العام - 150 ريال</option>
+                                                <option value="heart">فحص القلب - 300 ريال</option>
+                                                <option value="lab">التحاليل المخبرية - 200 ريال</option>
+                                                <option value="bones">فحص العظام - 250 ريال</option>
+                                                <option value="eyes">فحص العيون - 180 ريال</option>
+                                                <option value="psychology">الاستشارة النفسية - 220 ريال</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">التاريخ المفضل</label>
+                                            <input type="date" id="appointmentDate" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" required>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">الوقت المفضل</label>
+                                            <select id="appointmentTime" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" required>
+                                                <option value="">اختر الوقت</option>
+                                                <option value="09:00">9:00 صباحاً</option>
+                                                <option value="10:00">10:00 صباحاً</option>
+                                                <option value="11:00">11:00 صباحاً</option>
+                                                <option value="12:00">12:00 ظهراً</option>
+                                                <option value="14:00">2:00 مساءً</option>
+                                                <option value="15:00">3:00 مساءً</option>
+                                                <option value="16:00">4:00 مساءً</option>
+                                                <option value="17:00">5:00 مساءً</option>
+                                                <option value="18:00">6:00 مساءً</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">الجنس</label>
+                                            <select id="patientGender" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" required>
+                                                <option value="">اختر الجنس</option>
+                                                <option value="male">ذكر</option>
+                                                <option value="female">أنثى</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="md:col-span-2">
+                                            <label class="block text-gray-700 font-semibold mb-2">وصف الحالة (اختياري)</label>
+                                            <textarea id="patientCondition" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" rows="4" placeholder="اكتب وصفاً مختصراً عن حالتك أو الأعراض"></textarea>
+                                        </div>
+                                        
+                                        <div class="md:col-span-2">
+                                            <button type="submit" class="w-full bg-indigo-500 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 transition-colors">
+                                                تأكيد الحجز
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Appointments Management -->
+                    <section class="py-16">
+                        <div class="container mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-8">إدارة المواعيد</h2>
+                            <div class="max-w-4xl mx-auto">
+                                <div class="bg-white rounded-lg shadow-lg p-6">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h3 class="text-xl font-bold">المواعيد المحجوزة</h3>
+                                        <div class="flex gap-4">
+                                            <button id="todayAppointments" class="appointment-filter active bg-indigo-500 text-white px-4 py-2 rounded-lg">
+                                                اليوم
+                                            </button>
+                                            <button id="weekAppointments" class="appointment-filter bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-indigo-500 hover:text-white">
+                                                هذا الأسبوع
+                                            </button>
+                                            <button id="allAppointments" class="appointment-filter bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-indigo-500 hover:text-white">
+                                                جميع المواعيد
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="appointmentsList" class="space-y-4">
+                                        <div class="text-center text-gray-500 py-8">
+                                            لا توجد مواعيد محجوزة حالياً
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Doctor Info -->
+                    <section class="bg-indigo-50 py-16">
+                        <div class="container mx-auto px-6">
+                            <div class="max-w-4xl mx-auto text-center">
+                                <div class="text-8xl mb-6">👨‍⚕️</div>
+                                <h2 class="text-3xl font-bold mb-4">الدكتور محمد أحمد</h2>
+                                <p class="text-xl text-gray-600 mb-6">استشاري الطب الباطني</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-indigo-600">15+</div>
+                                        <div class="text-gray-600">سنة خبرة</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-indigo-600">5000+</div>
+                                        <div class="text-gray-600">مريض</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-indigo-600">98%</div>
+                                        <div class="text-gray-600">نسبة الرضا</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed">
+                                    الدكتور محمد أحمد هو استشاري طب باطني معتمد مع أكثر من 15 عاماً من الخبرة في تشخيص وعلاج الأمراض الباطنية. 
+                                    حاصل على شهادة البورد الأمريكي في الطب الباطني ودبلوم في أمراض القلب. يتميز بخبرته الواسعة في علاج أمراض السكري، 
+                                    ضغط الدم، وأمراض القلب والأوعية الدموية.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Info -->
+                    <section class="bg-indigo-500 text-white py-16">
+                        <div class="container mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-8">معلومات التواصل</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                <div class="text-center">
+                                    <div class="text-4xl mb-4">📞</div>
+                                    <h3 class="font-semibold mb-2">الهاتف</h3>
+                                    <p>920001234</p>
+                                    <p>011-4567890</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-4xl mb-4">📍</div>
+                                    <h3 class="font-semibold mb-2">العنوان</h3>
+                                    <p>الرياض - حي الملز</p>
+                                    <p>شارع الأمير محمد بن عبدالعزيز</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-4xl mb-4">⏰</div>
+                                    <h3 class="font-semibold mb-2">ساعات العمل</h3>
+                                    <p>السبت - الخميس</p>
+                                    <p>9:00 ص - 6:00 م</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-4xl mb-4">📧</div>
+                                    <h3 class="font-semibold mb-2">البريد الإلكتروني</h3>
+                                    <p>info@drmohamed.com</p>
+                                    <p>appointments@drmohamed.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- قسم التقييمات -->
-  <section class="reviews">
-    <h2>💬 آراء عملائنا</h2>
-    <div class="review">"خدمة ممتازة، الموقع سريع وأنيق 👌"</div>
-    <div class="review">"اتعاملت معاهم وصمموا لي موقع احترافي جدًا."</div>
-    <div class="review">"الدعم الفني متواصل وما فيش أي تأخير. أنصح بيهم 👍"</div>
-  </section>
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
 
-  <!-- زرار التواصل -->
-  <div class="contact">
-    <a href="https://m.me/YourSitePro" target="_blank" class="btn messenger">💬 راسلنا على ماسنجر</a>
-  </div>
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
 
-</body>
+                const filterValue = button.getAttribute('data-filter');
+
+                projectItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const restaurantModal = document.getElementById('restaurantModal');
+        const closeRestaurantModal = document.getElementById('closeRestaurantModal');
+        const blogModal = document.getElementById('blogModal');
+        const closeBlogModal = document.getElementById('closeBlogModal');
+        const clinicModal = document.getElementById('clinicModal');
+        const closeClinicModal = document.getElementById('closeClinicModal');
+        
+        // Project view buttons - using event delegation
+        document.addEventListener('click', (e) => {
+            if (e.target.textContent.includes('عرض المشروع')) {
+                const projectCard = e.target.closest('.project-item');
+                if (projectCard) {
+                    const projectTitle = projectCard.querySelector('h3').textContent;
+                    
+                    if (projectTitle === 'مطعم الذواقة') {
+                        restaurantModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    } else if (projectTitle === 'مدونة التقنية') {
+                        blogModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    } else if (projectTitle === 'عيادة الدكتور محمد') {
+                        clinicModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        alert('سيتم فتح المشروع في نافذة جديدة');
+                    }
+                }
+            } else if (e.target.textContent.includes('ابدأ مشروعك الآن')) {
+                alert('سيتم توجيهك إلى صفحة التواصل');
+            }
+        });
+
+        // Close modals
+        [closeRestaurantModal, closeBlogModal, closeClinicModal].forEach((closeBtn, index) => {
+            const modals = [restaurantModal, blogModal, clinicModal];
+            closeBtn.addEventListener('click', () => {
+                modals[index].classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modals when clicking outside
+        [restaurantModal, blogModal, clinicModal].forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Restaurant website functionality
+        let cart = [];
+        let total = 0;
+
+        // Menu filtering
+        const menuFilters = document.querySelectorAll('.menu-filter');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                menuFilters.forEach(f => {
+                    f.classList.remove('active', 'bg-orange-500', 'text-white');
+                    f.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                
+                filter.classList.add('active', 'bg-orange-500', 'text-white');
+                filter.classList.remove('bg-gray-200', 'text-gray-700');
+
+                const category = filter.getAttribute('data-category');
+                
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const totalPrice = document.getElementById('totalPrice');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const menuItem = e.target.closest('.menu-item');
+                const name = menuItem.querySelector('h3').textContent;
+                const price = parseInt(menuItem.querySelector('.text-orange-600').textContent);
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name, price, quantity: 1 });
+                }
+                
+                updateCart();
+                
+                // Visual feedback
+                button.textContent = 'تم الإضافة!';
+                button.classList.add('bg-green-500');
+                setTimeout(() => {
+                    button.textContent = 'أضف للسلة';
+                    button.classList.remove('bg-green-500');
+                }, 1000);
+            });
+        });
+
+        function updateCart() {
+            cartItems.innerHTML = '';
+            total = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">السلة فارغة</p>';
+                checkoutBtn.disabled = true;
+            } else {
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex justify-between items-center bg-gray-50 p-3 rounded';
+                    cartItem.innerHTML = `
+                        <div>
+                            <span class="font-semibold">${item.name}</span>
+                            <span class="text-gray-600 mr-2">x${item.quantity}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-orange-600">${itemTotal} ريال</span>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700">🗑️</button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+                checkoutBtn.disabled = false;
+            }
+            
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            totalPrice.textContent = total + ' ريال';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Checkout functionality
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                alert(`تم تأكيد طلبك بقيمة ${total} ريال. سيتم التواصل معك قريباً!`);
+                cart = [];
+                updateCart();
+            }
+        });
+
+        // Blog website functionality
+        const blogFilters = document.querySelectorAll('.blog-filter');
+        const blogPosts = document.querySelectorAll('.blog-post');
+
+        blogFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                blogFilters.forEach(f => {
+                    f.classList.remove('active', 'bg-teal-500', 'text-white');
+                    f.classList.add('bg-white', 'text-gray-700');
+                });
+                
+                filter.classList.add('active', 'bg-teal-500', 'text-white');
+                filter.classList.remove('bg-white', 'text-gray-700');
+
+                const category = filter.getAttribute('data-category');
+                
+                blogPosts.forEach(post => {
+                    if (category === 'all' || post.getAttribute('data-category') === category) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Blog interactions
+        document.addEventListener('click', (e) => {
+            if (e.target.textContent === 'اقرأ المزيد ←') {
+                alert('سيتم فتح المقال كاملاً في صفحة جديدة');
+            } else if (e.target.textContent === 'اقرأ المقال كاملاً') {
+                alert('سيتم فتح المقال المميز كاملاً');
+            } else if (e.target.textContent === 'اشترك في النشرة' || e.target.textContent === 'اشترك') {
+                alert('شكراً لك! سيتم إرسال النشرة الإخبارية إلى بريدك الإلكتروني');
+            } else if (e.target.textContent === 'تصفح المقالات') {
+                document.querySelector('#blogPosts').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Clinic website functionality
+        let appointments = [];
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        const appointmentDateInput = document.getElementById('appointmentDate');
+        if (appointmentDateInput) {
+            appointmentDateInput.min = today;
+        }
+
+        // Appointment form submission
+        const appointmentForm = document.getElementById('appointmentForm');
+        if (appointmentForm) {
+            appointmentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = {
+                    id: Date.now(),
+                    name: document.getElementById('patientName').value,
+                    phone: document.getElementById('patientPhone').value,
+                    email: document.getElementById('patientEmail').value,
+                    age: document.getElementById('patientAge').value,
+                    service: document.getElementById('serviceType').value,
+                    date: document.getElementById('appointmentDate').value,
+                    time: document.getElementById('appointmentTime').value,
+                    gender: document.getElementById('patientGender').value,
+                    condition: document.getElementById('patientCondition').value,
+                    status: 'مؤكد',
+                    createdAt: new Date().toISOString()
+                };
+                
+                appointments.push(formData);
+                updateAppointmentsList();
+                appointmentForm.reset();
+                
+                alert('تم حجز موعدك بنجاح! سيتم التواصل معك قريباً لتأكيد الموعد.');
+            });
+        }
+
+        // Service booking buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.textContent === 'احجز الآن') {
+                const serviceCard = e.target.closest('.bg-white');
+                const serviceName = serviceCard.querySelector('h3').textContent;
+                const servicePrice = serviceCard.querySelector('.text-indigo-600').textContent;
+                
+                // Scroll to booking form
+                document.querySelector('#appointmentForm').scrollIntoView({ behavior: 'smooth' });
+                
+                // Pre-select service
+                const serviceSelect = document.getElementById('serviceType');
+                const serviceValue = serviceName.includes('الفحص العام') ? 'general' :
+                                   serviceName.includes('فحص القلب') ? 'heart' :
+                                   serviceName.includes('التحاليل') ? 'lab' :
+                                   serviceName.includes('فحص العظام') ? 'bones' :
+                                   serviceName.includes('فحص العيون') ? 'eyes' :
+                                   serviceName.includes('الاستشارة النفسية') ? 'psychology' : '';
+                
+                if (serviceSelect && serviceValue) {
+                    serviceSelect.value = serviceValue;
+                }
+            }
+        });
+
+        // Appointment filters
+        const appointmentFilters = document.querySelectorAll('.appointment-filter');
+        appointmentFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                appointmentFilters.forEach(f => {
+                    f.classList.remove('active', 'bg-indigo-500', 'text-white');
+                    f.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                
+                filter.classList.add('active', 'bg-indigo-500', 'text-white');
+                filter.classList.remove('bg-gray-200', 'text-gray-700');
+                
+                updateAppointmentsList(filter.id);
+            });
+        });
+
+        function updateAppointmentsList(filter = 'todayAppointments') {
+            const appointmentsList = document.getElementById('appointmentsList');
+            if (!appointmentsList) return;
+            
+            let filteredAppointments = appointments;
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+            const weekFromNow = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+            
+            if (filter === 'todayAppointments') {
+                filteredAppointments = appointments.filter(apt => apt.date === todayStr);
+            } else if (filter === 'weekAppointments') {
+                filteredAppointments = appointments.filter(apt => apt.date >= todayStr && apt.date <= weekFromNow);
+            }
+            
+            appointmentsList.innerHTML = '';
+            
+            if (filteredAppointments.length === 0) {
+                appointmentsList.innerHTML = '<div class="text-center text-gray-500 py-8">لا توجد مواعيد في هذه الفترة</div>';
+                return;
+            }
+            
+            filteredAppointments.forEach(appointment => {
+                const serviceNames = {
+                    'general': 'الفحص العام',
+                    'heart': 'فحص القلب',
+                    'lab': 'التحاليل المخبرية',
+                    'bones': 'فحص العظام',
+                    'eyes': 'فحص العيون',
+                    'psychology': 'الاستشارة النفسية'
+                };
+                
+                const appointmentCard = document.createElement('div');
+                appointmentCard.className = 'bg-gray-50 rounded-lg p-4 border-r-4 border-indigo-500';
+                appointmentCard.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg mb-2">${appointment.name}</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                                <div><strong>الخدمة:</strong> ${serviceNames[appointment.service] || appointment.service}</div>
+                                <div><strong>التاريخ:</strong> ${appointment.date}</div>
+                                <div><strong>الوقت:</strong> ${appointment.time}</div>
+                                <div><strong>الهاتف:</strong> ${appointment.phone}</div>
+                                <div><strong>العمر:</strong> ${appointment.age}</div>
+                                <div><strong>الجنس:</strong> ${appointment.gender === 'male' ? 'ذكر' : 'أنثى'}</div>
+                            </div>
+                            ${appointment.condition ? `<div class="mt-2 text-sm"><strong>وصف الحالة:</strong> ${appointment.condition}</div>` : ''}
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">${appointment.status}</span>
+                            <button onclick="cancelAppointment(${appointment.id})" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">
+                                إلغاء
+                            </button>
+                        </div>
+                    </div>
+                `;
+                appointmentsList.appendChild(appointmentCard);
+            });
+        }
+
+        function cancelAppointment(appointmentId) {
+            if (confirm('هل أنت متأكد من إلغاء هذا الموعد؟')) {
+                appointments = appointments.filter(apt => apt.id !== appointmentId);
+                updateAppointmentsList();
+                alert('تم إلغاء الموعد بنجاح');
+            }
+        }
+
+        // Contact buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.textContent === 'احجز موعد') {
+                document.querySelector('#appointmentForm').scrollIntoView({ behavior: 'smooth' });
+            } else if (e.target.textContent === 'تواصل معنا') {
+                alert('يمكنك التواصل معنا على الرقم: 920001234');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f1be0ec3553d70',t:'MTc1Nzg3MjM5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-

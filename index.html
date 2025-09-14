@@ -113,7 +113,10 @@
                     <button onclick="scrollToSection('contact')" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" id="cta-primary">
                         ابدأ مشروعك الآن
                     </button>
-                    <button onclick="scrollToSection('services')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors" id="cta-secondary">
+                    <button onclick="window.location.href='we-working.html'" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors" id="cta-s">
+                        أعمالنا
+                    </button>
+                    <button onclick="scrollToSection('services')"  class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" id="cta-secondary">
                         تعرف على خدماتنا
                     </button>
                 </div>
@@ -204,7 +207,7 @@
                     
                     <div class="grid grid-cols-2 gap-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-indigo-600 mb-2">100+</div>
+                            <div class="text-3xl font-bold text-indigo-600 mb-2">150+</div>
                             <div class="text-gray-600" id="stat1">مشروع مكتمل</div>
                         </div>
                         <div class="text-center">
@@ -308,6 +311,7 @@
                 navAbout: "من نحن",
                 navContact: "اتصل بنا",
                 langBtn: "English",
+                ctas: "أعمالنا",
                 heroTitle: "نبني مواقع احترافية تميز علامتك التجارية",
                 heroSubtitle: "نحن فريق من المطورين والمصممين المحترفين نساعدك في إنشاء موقع إلكتروني متميز يعكس هويتك ويحقق أهدافك التجارية",
                 ctaPrimary: "ابدأ مشروعك الآن",
@@ -367,6 +371,7 @@
                 service2Title: "Mobile Applications",
                 service2Desc: "Professional app development for iPhone and Android using the latest technologies and best practices",
                 service3Title: "Desktop Software",
+                ctas: "We Working", 
                 service3Desc: "Desktop application development for Windows, Mac, and Linux systems according to your needs",
                 service4Title: "Bot Development",
                 service4Desc: "Smart bots for WhatsApp, Telegram, and Discord to automate your services and improve customer engagement",
@@ -421,6 +426,7 @@
             const elementMap = {
                 'logo': 'logo',
                 'nav-home': 'navHome',
+                'cta-s' : 'ctas',
                 'nav-services': 'navServices',
                 'nav-about': 'navAbout',
                 'nav-contact': 'navContact',
